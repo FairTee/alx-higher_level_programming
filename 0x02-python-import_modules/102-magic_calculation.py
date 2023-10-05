@@ -5,7 +5,7 @@ if __name__ == '__main__':
         if a < b:
             from magic_calculation_102 import add
             c = 0
-            for i in range(4, 7):
+            for i in range(4, 6):
                 c = add(c, i)
             return c
         from magic_calculation_102 import sub
