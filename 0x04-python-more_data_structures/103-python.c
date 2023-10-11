@@ -60,6 +60,7 @@ void print_python_list(PyObject *p)
 	{
 		PyObject *element = PyList_GetItem(p, i);
 		const char *type = element->ob_type->tp_name;
+
 		printf("Element %lu: %s\n", i, type);
 
 		if (PyBytes_Check(element))
