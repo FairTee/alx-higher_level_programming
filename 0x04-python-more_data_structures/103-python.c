@@ -11,7 +11,7 @@
 void print_python_bytes(PyObject *p)
 {
 	char *string;
-	long int size, i, limit;
+	long int size, i, peg;
 
 	printf("[.] bytes object info\n");
 	if (!PyBytes_Check(p))
@@ -27,13 +27,13 @@ void print_python_bytes(PyObject *p)
 	printf("  trying string: %s\n", string);
 
 	if (size >= 10)
-		limit = 10;
+		peg = 10;
 	else
-		limit = size + 1;
+		peg = size + 1;
 
-	printf("  first %ld bytes:", limit);
+	printf("  first %ld bytes:", peg);
 
-	for (i = 0; i < limit; i++)
+	for (i = 0; i < peg; i++)
 		if (string[i] >= 0)
 			printf(" %02x", string[i]);
 		else
@@ -44,14 +44,12 @@ void print_python_bytes(PyObject *p)
 
 /**
  * print_python_list - Prints list information
- *
  * @p: Python Object
- * Return: no return
  */
 void print_python_list(PyObject *p)
 {
 	long int size, i;
-	PyListObject *list;
+	PyListObject *log;
 	PyObject *obj;
 
 	size = ((PyVarObject *)(p))->ob_size;
@@ -59,7 +57,7 @@ void print_python_list(PyObject *p)
 
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %ld\n", size);
-	printf("[*] Allocated = %ld\n", list->allocated);
+	printf("[*] Allocated = %ld\n", log->allocated);
 
 	for (i = 0; i < size; i++)
 	{
