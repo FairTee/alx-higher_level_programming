@@ -17,4 +17,4 @@ class MyList(list):
         """
         Print the list in ascending sorted order.
         """
-        print(sorted_list(self.copy()))
+        print(sorted(self.copy()))
