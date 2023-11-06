@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-def is_same_class(obj, a_class):
+"""Contains function Is_same_class"""
+
+
+def is_same_class(obj, same_class):
     """
     Check if an object is an instance of a specified class.
 
@@ -11,4 +14,4 @@ def is_same_class(obj, a_class):
         True if the object is an
         instance of the specified class; otherwise, False.
     """
-    return (type(obj) == a_class)
+    return (type(obj) == same_class)
