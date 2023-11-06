@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""List Module"""
+
+
 class MyList(list):
     """
     A custom list class that inherits from the built-in list class.
@@ -14,5 +17,4 @@ class MyList(list):
         """
         Print the list in ascending sorted order.
         """
-        sorted_list = sorted(self)
-        print(sorted_list)
+        print(sorted_list(self.copy()))
