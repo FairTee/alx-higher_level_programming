@@ -2,7 +2,7 @@
 """Has inherits_from function"""
 
 
-def inherits_from(obj, inh):
+def inherits_from(obj, a_class):
     """
     Check if an object is an instance of a
     class that inherits (directly or indirectly)
@@ -17,4 +17,4 @@ def inherits_from(obj, inh):
         class that inherits from the specified class;
         otherwise, False.
     """
-    return (isinstance(type(obj), inh) and type(obj) is not inh)
+    return isinstance(obj, a_class) and type(obj) is not a_class
