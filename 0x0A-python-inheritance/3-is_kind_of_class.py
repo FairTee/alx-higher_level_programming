@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-def is_kind_of_class(obj, a_class):
+"""Conatins is_kind_of_class"""
+
+
+def is_kind_of_class(obj, kind_class):
     """
     Check if an object is an instance of, or inherits from, a specified class.
 
@@ -10,4 +13,4 @@ def is_kind_of_class(obj, a_class):
     Returns:
         True if the object is an instance of, or inherits from, the specified class; otherwise, False.
     """
-    return (isinstance(obj, a_class))
+    return (isinstance(obj, kind_class))
