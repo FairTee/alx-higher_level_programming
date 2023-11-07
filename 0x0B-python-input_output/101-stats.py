@@ -1,52 +1,34 @@
 #!/usr/bin/python3
-"""COntains print mechanics functions"""
+"""COntains print dict sorted"""
 
 
-import sys
-
-
-def print_metrics(metrics):
-    """
-    Print the computed metrics.
+def print_dict_sorted_nonzero(status_codes):
+    """Subroutine to print status codes with nonzero value in
+    numericalorder.
 
     Args:
-        metrics (dict): A dictionary containing the metrics.
-
-    The function prints the total file size
-    and the number of lines for each status code.
+        status_codes (dict): dictionary of status codes and the
+            number of times each one has been returned.
     """
-    total_size = metrics.get('total_size', 0)
-    status_codes = [200, 301, 400, 401, 403, 404, 405, 500]
-
-    print(f"File size: {total_size}")
-    for code in sorted(status_codes):
-        count = metrics.get(code, 0)
-        if count > 0:
-            print(f"{code}: {count}")
+    sorted_keys = sorted(status_codes.keys())
+    print('\n'.join(["{:d}: {:d}".format(k, status_codes[k])
+                     for k in sorted_keys if status_codes[k] != 0]))
 
 
-def main():
-    metrics = {}
-    line_count = 0
+if __name__ == "__main__":
+    import sys
 
     try:
-        for line in sys.stdin:
-            line_count += 1
-            data = line.split()
-            if len(data) > 6:
-                code = int(data[-2])
-                size = int(data[-1])
-                metrics['total_size'] = metrics.get('total_size', 0) + size
-                metrics[code] = metrics.get(code, 0) + 1
-
-            if line_count % 10 == 0:
-                print_metrics(metrics)
-
-    except KeyboardInterrupt:
-        pass
-
-    print_metrics(metrics)
-
-
-if __name__ == "__main":
-    main()
+        total = 0
+        status_codes = \
+            {code: 0 for code in [200, 301, 400, 401, 403, 404, 405, 500]}
+        for n, line in enumerate(sys.stdin, 1):
+            words = line.split()
+            total += int(words[-1])
+            status_codes[int(words[-2])] += 1
+            if n % 10 == 0:
+                print("File size: {:d}".format(total))
+                print_dict_sorted_nonzero(status_codes)
+    finally:
+        print("File size: {:d}".format(total))
+        print_dict_sorted_nonzero(status_codes)
