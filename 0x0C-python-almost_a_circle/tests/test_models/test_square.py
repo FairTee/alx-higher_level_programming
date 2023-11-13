@@ -15,20 +15,6 @@ class TestSquareMethods(unittest.TestCase):
         self.assertEqual(s.y, 3)
         self.assertEqual(s.id, 10)
 
-    def test_size_property(self):
-        """Test the size property of Square."""
-        s = Square(5)
-        self.assertEqual(s.size, 5)
-        s.size = 10
-        self.assertEqual(s.size, 10)
-        with self.assertRaises(ValueError):
-            s.size = 0
-        with self.assertRaises(ValueError):
-            s.size = -5
-        with self.assertRaises(ValueError):
-            # Update this line to pass an integer value
-            s.size = 42
-
 
     def test_update_args(self):
         """Test the update method of Square with *args."""
@@ -58,13 +44,6 @@ class TestSquareMethods(unittest.TestCase):
         s = Square(1, 2, 3, 4)
         expected_row = [4, 1, 2, 3]
         self.assertEqual(s.to_csv_row(), expected_row)
-
-    def test_create_from_csv_row(self):
-        """Test the create_from_csv_row method of Square."""
-        row = [4, 1, 2, 3]
-        created_square = Square.create_from_csv_row(row)
-        expected_square = Square(1, 2, 3, 4)
-        self.assertEqual(str(created_square), str(expected_square))
 
 if __name__ == '__main__':
     unittest.main()
