@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+"""State lists"""
+
+from sys import argv
 import MySQLdb
-import sys
 
 if __name__ == "__main__":
     # Check if correct number of arguments are provided
