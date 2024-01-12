@@ -1,15 +1,17 @@
 #!/usr/bin/python3
-"""Lists all State objects, and corresponding City objects, contained in the database hbtn_0e_101_usa"""
+"""Lists all State objects"""
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from relationship_state import Base, State
 from relationship_city import City
 
+
 def list_states_cities(username, password, database):
     """List all State objects and corresponding City objects"""
     # Create the engine
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(username, password, database), pool_pre_ping=True)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+        username, password, database), pool_pre_ping=True)
 
     # Create a session
     Session = sessionmaker(bind=engine)
@@ -26,6 +28,7 @@ def list_states_cities(username, password, database):
 
     # Close the session
     session.close()
+
 
 if __name__ == "__main__":
     # Check if correct number of arguments are provided

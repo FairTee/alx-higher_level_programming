@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Create the State "California" with the City "San Francisco" in the database"""
+"""Create the State"""
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -16,7 +16,8 @@ if __name__ == "__main__":
     username, password, database = sys.argv[1], sys.argv[2], sys.argv[3]
 
     # Connect to the MySQL server
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(username, password, database), pool_pre_ping=True)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+        username, password, database), pool_pre_ping=True)
 
     # Create the tables
     Base.metadata.create_all(engine)
@@ -27,7 +28,8 @@ if __name__ == "__main__":
 
     try:
         # Create the State "California" with the City "San Francisco"
-        california = State(name='California', cities=[City(name='San Francisco')])
+        california = State(
+                name='California', cities=[City(name='San Francisco')])
 
         # Add the new state to the session
         session.add(california)

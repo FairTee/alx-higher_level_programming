@@ -16,15 +16,18 @@ if __name__ == "__main__":
     username, password, database = sys.argv[1], sys.argv[2], sys.argv[3]
 
     # Connect to the MySQL server
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(username, password, database), pool_pre_ping=True)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+        username, password, database), pool_pre_ping=True)
 
     # Create a session to interact with the database
     Session = sessionmaker(bind=engine)
     session = Session()
 
     try:
-        # Query and print all City objects by state in ascending order by cities.id
-        cities_by_state = session.query(State, City).join(City).order_by(City.id).all()
+        # Query and print all City objects by
+        # state in ascending order by cities.id
+        cities_by_state = session.query(
+                State, City).join(City).order_by(City.id).all()
 
         for state, city in cities_by_state:
             print("{}: ({}) {}".format(state.name, city.id, city.name))

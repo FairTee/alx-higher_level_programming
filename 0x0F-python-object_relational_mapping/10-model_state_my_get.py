@@ -9,14 +9,17 @@ from model_state import Base, State
 if __name__ == "__main__":
     # Check if correct number of arguments are provided
     if len(sys.argv) != 5:
-        print("Usage: {} <username> <password> <database> <state_name>".format(sys.argv[0]))
+        print("Usage: {} <username> <password> <database> <state_name>".format(
+            sys.argv[0]))
         sys.exit(1)
 
     # Extract command line arguments
-    username, password, database, state_name = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+    username, password, database, state_name = sys.argv[1],
+    sys.argv[2], sys.argv[3], sys.argv[4]
 
     # Connect to the MySQL server
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(username, password, database), pool_pre_ping=True)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+        username, password, database), pool_pre_ping=True)
 
     # Create a session to interact with the database
     Session = sessionmaker(bind=engine)

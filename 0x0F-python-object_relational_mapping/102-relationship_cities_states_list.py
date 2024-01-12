@@ -6,10 +6,12 @@ from sqlalchemy.orm import sessionmaker
 from relationship_city import Base, City
 from relationship_state import State
 
+
 def list_cities_states(username, password, database):
     """List all City objects with their corresponding State objects"""
     # Create the engine
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(username, password, database), pool_pre_ping=True)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+        username, password, database), pool_pre_ping=True)
 
     # Create a session
     Session = sessionmaker(bind=engine)
@@ -25,6 +27,7 @@ def list_cities_states(username, password, database):
 
     # Close the session
     session.close()
+
 
 if __name__ == "__main__":
     # Check if correct number of arguments are provided
