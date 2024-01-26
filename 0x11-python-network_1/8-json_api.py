@@ -7,27 +7,16 @@ displays the id and name from the response.
 import requests
 import sys
 
-if len(sys.argv) == 2:
-    q = sys.argv[1]
-else:
-    q = ""
+if __name__ == "__main__":
+    leth = "" if len(sys.argv) == 1 else sys.argv[1]
+    p_load = {"q": leth}
 
-url = 'http://0.0.0.0:5000/search_user'
-data = {'q': q}
-
-try:
-    response = requests.post(url, data=data)
-    response.raise_for_status()
-
-    json_data = response.json()
-
-    if json_data:
-        print("[{}] {}".format(json_data.get('id'), json_data.get('name')))
-    else:
-        print("No result")
-
-except requests.exceptions.HTTPError as e:
-    if response.headers['content-type'] != 'application/json':
+    wq = requests.post("http://0.0.0.0:5000/search_user", data=p_load)
+    try:
+        response = wq.json()
+        if response == {}:
+            print("No result")
+        else:
+            print("[{}] {}".format(response.get("id"), response.get("name")))
+    except ValueError:
         print("Not a valid JSON")
-    else:
-        print("No result")
