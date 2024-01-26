@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Takes in a letter, sends a POST request, and displays the id and name from the response.
+Takes in a letter, sends a POST request, and
+displays the id and name from the response.
 """
 
 import requests
@@ -16,7 +17,7 @@ data = {'q': q}
 
 try:
     response = requests.post(url, data=data)
-    response.raise_for_status()  # Raises HTTPError for bad responses (4xx and 5xx)
+    response.raise_for_status()
 
     json_data = response.json()
 

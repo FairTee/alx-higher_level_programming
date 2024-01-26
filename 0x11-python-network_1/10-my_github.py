@@ -17,7 +17,7 @@ if len(sys.argv) == 3:
     response = requests.get(url, auth=auth)
 
     try:
-        response.raise_for_status()  # Raises HTTPError for bad responses (4xx and 5xx)
+        response.raise_for_status()
         json_data = response.json()
         print(json_data.get('id'))
 

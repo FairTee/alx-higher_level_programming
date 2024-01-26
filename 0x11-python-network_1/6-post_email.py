@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Takes in a URL and an email address, sends a POST request, and displays the body of the response.
+Takes in a URL and an email address
+sends a POST request, and displays the body of the response.
 """
 
 import requests

@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Lists 10 commits (from the most recent to oldest) of a specified repository by a specified user.
+Lists 10 commits (from the most recent to oldest)
+of a specified repository by a specified user.
 Uses the GitHub API.
 """
 
@@ -17,7 +18,7 @@ if len(sys.argv) == 3:
     response = requests.get(url, params=params)
 
     try:
-        response.raise_for_status()  # Raises HTTPError for bad responses (4xx and 5xx)
+        response.raise_for_status()
         json_data = response.json()
 
         for commit in json_data:
