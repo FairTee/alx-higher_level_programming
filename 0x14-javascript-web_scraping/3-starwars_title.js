@@ -9,7 +9,7 @@ request(url, (error, response, body) => {
     console.error(error);
     return;
   }
-  
+
   if (response.statusCode !== 200) {
     console.error(`Failed to retrieve data. Status code: ${response.statusCode}`);
     return;
